@@ -5,7 +5,7 @@ package modele;
 
 
 /**
- * @author Fantuzzi Sébastien
+ * @author Fantuzzi SÃ©bastien
  *
  */
 public class Partie {
@@ -14,7 +14,7 @@ public class Partie {
 	public String sauv[] = new String[3]; 
 	
 	/**
-	 * Méthode qui initialise les variables sur base des paramètres qu'elle reçoit
+	 * MÃ©thode qui initialise les variables sur base des paramÃ¨tres qu'elle reÃ§oit
 	 * @param les pseudo des 2 joueurs et la date de la partie
 	 */
 	public void Identifiant(String joueur1, String joueur2, String datePartie) {
@@ -24,12 +24,12 @@ public class Partie {
 		part.pseudo2 = joueur2;
 		part.dateJeux = datePartie;
 		sauv[0] = joueur1;
-	    sauv[1] = joueur2;
+	        sauv[1] = joueur2;
 		sauv[2] = datePartie;
 	}
 	
 	/**
-	 * Préparation de la future interface console
+	 * PrÃ©paration de la future interface console
 	 */
 	public static void  main (String [] args) {
 		
@@ -44,12 +44,5 @@ public class Partie {
 		else if( choix ==2) {
 			System.out.println("pas dispo pour le moment !");
 		}
-		
-		
-		Partie part = new Partie();
-		part.Identifiant("joueur1", "joueur2", "10/10/19");
-		System.out.println(part.sauv[0]);
-		System.out.println(part.sauv[1]);
-		System.out.println(part.sauv[2]);
 	}
 }
