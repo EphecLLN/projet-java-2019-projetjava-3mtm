@@ -4,7 +4,7 @@
 package modele;
 
 /**
- * @author Tresor
+ * @author Tekadam Tresor Ruphin
  *
  */
 public class Plateau {
