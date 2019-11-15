@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Tresor
+ * @author Tekadam Tresor Ruphin
  *
  */
 class PlateauTest {
