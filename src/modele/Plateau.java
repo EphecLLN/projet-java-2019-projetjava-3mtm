@@ -11,7 +11,7 @@ public class Plateau {
 
 	private int tabLength =9;
 	private int tabWidth =9;
-	public char [][] tableau;
+	public static char [][] tableau;
 	public char [] piece = {'L','C','S','G','R','F','T','P'};
 	public char [] piece2 = {'l','c','s','g','r','f','t','p'};
 	
@@ -27,8 +27,10 @@ public class Plateau {
 			for(int j=0;j<9;j++) {
 				if(i ==2) {
 		tableau[i][j] = piece[7];
-			}else {
+			}else if(i ==6) {
 				tableau[i][j] = piece2[7];
+			}else {
+				tableau[i][j] =' ';
 			}
 			}
 		}
