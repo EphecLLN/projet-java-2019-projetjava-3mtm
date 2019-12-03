@@ -276,7 +276,7 @@ public class Panneau extends JPanel implements Observer{
 	}
 		//plat.tableau[m.lastChange[1]][m.lastChange[0]-1]=' ';
 		System.out.println(m.lastChange[0]-1);
-		//Sy//stem.out.println(plat.tableau[6][2]);
+		//System.out.println(plat.tableau[6][2]);
 		plat.afficher();
 
   }

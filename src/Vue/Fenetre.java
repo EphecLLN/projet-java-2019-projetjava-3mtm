@@ -21,15 +21,16 @@ import java.util.Observer;
  * @author joachim
  *
  */
-public  class Fenetre extends JFrame /*implements Observer*/ {
+public  class Fenetre extends GUI implements Observer {
 	
 	//private static final long serialVersionUID=1L;
 	  public JButton bouton = new JButton("Restart");
-	  public MouseClass m;
-	public Panneau pan;
+	  public static MouseClass m;
+	public static Panneau pan;
 	//public Plateau p;
 	  
 	public Fenetre() {
+		super(m, pan);
 	    this.setTitle("Shogi");
 	    this.setSize(800, 700);
 	    this.setLocationRelativeTo(null);
@@ -49,7 +50,7 @@ public  class Fenetre extends JFrame /*implements Observer*/ {
 	        	m.TimeManager(pan,"B",0);
 	        }
 	      });
-	    m.addObserver(pan);
+	    m.addObserver(this);
 	    pan.add(bouton);
 		pan.addMouseListener(m);
 		//this.pan.addObserver(this);
@@ -59,6 +60,11 @@ public  class Fenetre extends JFrame /*implements Observer*/ {
 	    
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	   
 	    this.setVisible(true);    
+	}
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		System.out.println("test");
 	}
 	
 	
