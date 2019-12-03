@@ -1,10 +1,15 @@
 /**
  * 
  */
-package p;
+package Vue;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+
+import Controller.MouseClass;
+import model.Plateau;
+import p.*;
+
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +27,7 @@ public  class Fenetre extends JFrame /*implements Observer*/ {
 	  public JButton bouton = new JButton("Restart");
 	  public MouseClass m;
 	public Panneau pan;
+	//public Plateau p;
 	  
 	public Fenetre() {
 	    this.setTitle("Shogi");
@@ -43,6 +49,7 @@ public  class Fenetre extends JFrame /*implements Observer*/ {
 	        	m.TimeManager(pan,"B",0);
 	        }
 	      });
+	    m.addObserver(pan);
 	    pan.add(bouton);
 		pan.addMouseListener(m);
 		//this.pan.addObserver(this);

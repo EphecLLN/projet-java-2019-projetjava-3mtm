@@ -18,11 +18,11 @@ import java.awt.event.MouseEvent;
  *
  */
 public class Case /*extends JPanel*/ {
-	int compteur;
-	int x;
-	int y;
-	Object obj;
-	String type;
+	public int compteur;
+	public int x;
+	public int y;
+	public Object obj;
+	public String type;
 	/*
 		Pion pt ;
 	Roi roi;

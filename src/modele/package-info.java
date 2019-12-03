@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Tresor
- *
- */
-package modele;

@@ -1,8 +1,9 @@
 /**
  * 
  */
-package p;
-
+package Controller;
+import p.*;
+import Vue.*;
 import java.awt.Point;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 import java.util.TimerTask;
+import java.util.Observable;
 import java.util.Timer;
 
 import javax.imageio.ImageIO;
@@ -24,14 +26,15 @@ import javax.imageio.ImageIO;
  * @author joachim
  *
  */
-public class MouseClass implements MouseListener{
+public class MouseClass extends Observable implements MouseListener{
 	
 	
-	 int compteurClick=0;
-	  Timer timer = new Timer(true);
-	  TimerTask timerTask;
-	  int compteurN=0;
-		int compteurB=0;
+	 public int compteurClick=0;
+	 public Timer timer = new Timer(true);
+	 public TimerTask timerTask;
+	 public int compteurN=0;
+	 public int compteurB=0;
+	 public static int lastChange[] = new int[2];
 	
 	Panneau panneau ;
 	int checkC;
@@ -54,12 +57,12 @@ public class MouseClass implements MouseListener{
 		if(piece == "") {
 			System.out.println(piece);
 			if(x<50 || y<50 || x>500 || y>500) {
-				System.out.println("ce n est pas une case...");
+				//System.out.println("ce n est pas une case...");
 			}else {
-	        System.out.println("les coordonnées sont : "+x + " " + y);
+	        //System.out.println("les coordonnées sont : "+x + " " + y);
 	        int col = ((x-50)/50)+1;
 			int ligne = ((y-50)/50)+1;
-				System.out.println("cln n* " +  col + " ligne n* "  + ligne);
+				//System.out.println("cln n* " +  col + " ligne n* "  + ligne);
 				Graphics graph = panneau.getGraphics();
 			    graph.setColor(Color.red);
 				for(int i = 0 ; i<panneau.caseDuTableau.length;i++) {
@@ -332,7 +335,7 @@ public class MouseClass implements MouseListener{
 	public void affichagePossibilite(int col,int ligne,int axeX,int axeY,int tableauN[][],int tableauB[][],Graphics graph,int i,String couleur,String p,int start) {
 		if(panneau.finDePartie=="") {
 		if(axeX== col && axeY == ligne) {
-			System.out.println(p+" cln " + col + " ligne " + ligne);
+			//System.out.println(p+" cln " + col + " ligne " + ligne);
 			if(couleur=="N") {
 				if(panneau.alternance==1) {
 					piece= p;
@@ -381,7 +384,7 @@ public class MouseClass implements MouseListener{
 	public void affichagePossibiliteTE(int col,int ligne,int axeX,int axeY,int tableauN[][][],int tableauB[][][],Graphics graph,int i,String couleur,String p,int start) {
 		if(panneau.finDePartie=="") {
 		if(axeX == col && axeY == ligne) {
-		System.out.println(p+" cln " + col + " ligne " + ligne);
+		//System.out.println(p+" cln " + col + " ligne " + ligne);
 		if(couleur=="N") {
 			if(panneau.alternance==1) {
 				piece= p;
@@ -480,6 +483,8 @@ public class MouseClass implements MouseListener{
 						    	checkC = checkCRoi[i];
 						    	checkL = checkLRoi[i];
 						    	panneau.caseDuTableau[c] = new Case(c,checkC/50 , (checkL/50)-1 , null,"vide");
+						    	lastChange[0] = checkC/50;
+						    	lastChange[1] = checkL/50;
 						    	int caseA = ((checkL/50)-1)*9-1+checkC/50;
 						    	finPartie(caseA,panneau,graphi);
 						    	if(coul=="N") {
@@ -494,6 +499,9 @@ public class MouseClass implements MouseListener{
 						        	compteurClick=0;
 						    		TimeManager(panneau,"B",panneau.restart);
 						    		compteurClick=1;
+						    		/*
+						    		setChanged();
+						    	    notifyObservers();*/
 						    	}else {
 						    		panneau.alternance=1;
 						    		if(ym>=2) {
@@ -509,6 +517,9 @@ public class MouseClass implements MouseListener{
 						        	TimeManager(panneau,"N",panneau.restart);
 						        	compteurClick=1;
 						        	panneau.restart=1;
+						        	/*
+						        	setChanged();
+						            notifyObservers();*/
 						   }
 			    	}
 				}
@@ -531,6 +542,8 @@ public class MouseClass implements MouseListener{
 					TimeManager(panneau,"N",panneau.restart);
 					compteurClick=0;
 					panneau.restart=0;
+					setChanged();
+		    	    notifyObservers();
 				}else {
 					graphi.setColor(Color.white);
 					graphi.fillRect(50, 50, 1000, 1000);
@@ -539,10 +552,14 @@ public class MouseClass implements MouseListener{
 					TimeManager(panneau,"B",panneau.restart);
 					compteurClick=0;
 					panneau.restart=0;
+					setChanged();
+		    	    notifyObservers();
 				}
 			}
 			//Client cli = panneau.c;
 			//cli.line="test";
+			setChanged();
+    	    notifyObservers();
 			checkCRoi= new int[50];
 			checkLRoi= new int[50];
 			checkC = 0;

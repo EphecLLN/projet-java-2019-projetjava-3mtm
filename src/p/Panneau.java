@@ -5,14 +5,19 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+import Controller.MouseClass;
+import model.Plateau;
 
 import java.awt.Image;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.imageio.ImageIO;
 
-public class Panneau extends JPanel{
+public class Panneau extends JPanel implements Observer{
 	int compteurPion = 0;
 	public int alternance=0;
 	public String finDePartie="";
@@ -62,7 +67,7 @@ public class Panneau extends JPanel{
 		    {7 , 8},
 		    {7 , 9}
 	};
-	Case caseDuTableau[] = new Case[81];//tableau contenant toutes les cases
+	public static Case caseDuTableau[] = new Case[81];//tableau contenant toutes les cases
 	  public void paintComponent(Graphics g){
 		  //s= new Server(6666);
 		  //c= new Client("127.0.0.1",6666);
@@ -241,5 +246,39 @@ public class Panneau extends JPanel{
 	public static void main(String[] args) {
 		
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		MouseClass m=new MouseClass(new Panneau());
+		Plateau plat = new Plateau();
+		for(int i =0;i<caseDuTableau.length;i++) {
+			if(caseDuTableau[i]!=null) {
+				if(m.trouvePieceCouleur(caseDuTableau[i])=="N") {
+				String s =caseDuTableau[i].type.toUpperCase();
+				if(s=="VIDE") {
+					s=" ";
+				}
+				plat.tableau[caseDuTableau[i].y-1][caseDuTableau[i].x-1]=s.charAt(0);
+				}else {
+				String s =caseDuTableau[i].type.toLowerCase();
+				if(s=="vide") {
+					s=" ";
+				}
+				if(s=="pion") {
+					System.out.println(caseDuTableau[i].y-1);
+					System.out.println(caseDuTableau[i].x-1);
+				}
+				//plat.tableau[m.lastChange[1]][m.lastChange[0]]=' ';
+				plat.tableau[caseDuTableau[i].y-1][caseDuTableau[i].x-1]=s.charAt(0);
+				}
+			}
+		
+	}
+		//plat.tableau[m.lastChange[1]][m.lastChange[0]-1]=' ';
+		System.out.println(m.lastChange[0]-1);
+		//Sy//stem.out.println(plat.tableau[6][2]);
+		plat.afficher();
+
+  }
 
 }

@@ -1,13 +1,15 @@
 /**
  * 
  */
-package modele;
+package model;
+
+import java.util.Observable;
 
 /**
  * @author tresor
  *
  */
-public class Gold {
+public class Gold extends Observable{
 	Plateau tab = new Plateau();
 	
 public void  gold(int x,int y,int x2,int y2) {
@@ -41,6 +43,8 @@ public void  gold(int x,int y,int x2,int y2) {
 }
 }
 	tab.afficher();
+	setChanged();
+    notifyObservers();
 	
 }
 
