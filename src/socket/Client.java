@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
-
+//ajout pr tresor
 public class Client {
 	static final int port = 9000;
 
