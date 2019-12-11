@@ -27,7 +27,7 @@ public class Client {
 	            pred.println(str);          // envoi d'un message
 	            str = sc.nextLine();
 	            if(str.equals("END"))break;
-	            //str = plec.readLine();      // lecture de l'écho
+	            //str = plec.readLine();      // lecture de l'Ã©cho
 	        }
 	        
 	        System.out.println("END");     // message de terminaison
