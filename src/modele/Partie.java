@@ -202,6 +202,7 @@ public class Partie extends Observable {
 					bishop.fou(x, y, x2, y2);
 					break;
 				case 'T':
+					System.out.println("okok");
 					rook.tour(x, y, x2, y2);
 					break;
 				case 'C':
@@ -255,6 +256,7 @@ public class Partie extends Observable {
 					bishop.fou(x, y, x2, y2);
 					break;
 				case 't':
+					System.out.println("okok");
 					rook.tour(x, y, x2, y2);
 					break;
 				case 'x':
