@@ -55,7 +55,7 @@ public class Rois {
 
 			for (int i = 0; i < 8; i++) {
 				if (Partie.player % 2 == 1) {
-					new Plateau();
+					//new Plateau();
 					/*
 					 * Si cest au joueur 1 de jouer,
 					 */
@@ -63,7 +63,7 @@ public class Rois {
 						Partie.setMessErreur("vous avez deja une piece a cette position !");
 						--Partie.player;
 						break;
-					} else if (Plateau.tableau[x2][y2] == new Plateau().piece2[i]) {
+					} else if (Plateau.tableau[x2][y2] == Plateau.piece2[i]) {
 						Plateau.setTableau(x, y, x2, y2);
 						break;
 					}
@@ -73,11 +73,11 @@ public class Rois {
 					 * Si cest au joueur 2 de jouer
 					 */
 					if (Partie.player % 2 == 0) {
-						if (Plateau.tableau[x2][y2] == new Plateau().piece[i]) {
+						if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 							Partie.setMessErreur("vous avez deja une piece a cette position !");
 							--Partie.player;
 							break;
-						} else if (Plateau.tableau[x2][y2] == new Plateau().piece2[i]) {
+						} else if (Plateau.tableau[x2][y2] ==Plateau.piece2[i]) {
 							Plateau.setTableau(x, y, x2, y2);
 							break;
 

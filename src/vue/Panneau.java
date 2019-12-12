@@ -14,7 +14,7 @@ import java.awt.event.MouseListener;
 
 
 
-  public class Panneau extends JPanel  {
+  public class Panneau extends JPanel  {//dessin de l'echiquier
 	  
 	  int ligne;
 	  int col;
@@ -33,6 +33,13 @@ import java.awt.event.MouseListener;
 		  g.setColor(Color.gray);
 		
 		  g.fill3DRect(47, 47, 456, 456,true);
+		  if(modele.Partie.getMessErreur()=="***Partie Terminée !****") {
+				g.setColor(Color.white);
+				g.fillRect(50, 50, 500, 500);
+				g.setColor(Color.black);
+				g.drawString("FIN DE PARTIE", 300, 300);
+				g.drawString(modele.Partie.getMessage(), 200, 200);
+			}else {
 		  int compteur =0;
 		 for(int i = 0; i<9 ; i++) {
 		  for(int j = 0 ; j<9 ; j++) {
@@ -102,6 +109,7 @@ import java.awt.event.MouseListener;
 				  
 			 
 				  }
+		 }
 		 
 	 }
 		

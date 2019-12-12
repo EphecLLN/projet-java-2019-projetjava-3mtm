@@ -13,7 +13,7 @@ public class Cavalier {
 
 	public void cavalier(int x, int y, int x2, int y2) {
 		/*
-		 * coord est un tableau qui contient tout les deplacement possible du Gold.
+		 * coord est un tableau qui contient tout les deplacement possible du Cavalier.
 		 */
 		int[][] coord = { { x + 2, y - 1 }, { x + 2, y + 1 } };
 		int[][] coord2 = { { x - 2, y - 1 }, { x - 2, y + 1 } };
@@ -41,13 +41,13 @@ public class Cavalier {
 				 * Si cest au joueur 1 de jouer
 				 */
 				if (Partie.player % 2 == 1) {
-					new Plateau();
+					//new Plateau();
 					if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 						Partie.setMessErreur("vous avez deja une piece a cette position !");
 						--Partie.player;
 						break;
 					} else {
-						new Plateau();
+						//new Plateau();
 						if (Plateau.tableau[x2][y2] == Plateau.piece2[i]) {
 							Partie.messErreur =" ";
 							Plateau.setTableau(x, y, x2, y2);
@@ -55,7 +55,7 @@ public class Cavalier {
 						}
 					}
 				} else {
-					new Plateau();
+					//new Plateau();
 					/*
 					 * Si cest au joueur 1 de jouer
 					 */
@@ -64,7 +64,7 @@ public class Cavalier {
 						--Partie.player;
 						break;
 					} else {
-						new Plateau();
+						//new Plateau();
 						if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 							Partie.messErreur =" ";
 							Plateau.setTableau(x, y, x2, y2);

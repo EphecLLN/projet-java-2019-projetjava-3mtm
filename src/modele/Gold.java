@@ -50,7 +50,7 @@ public class Gold {
 				 */
 				if (Partie.player % 2 == 1) {
 
-					new Plateau();
+					//new Plateau();
 					if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 						Partie.setMessErreur("vous avez deja une piece a cette position !");
 						--Partie.player;
@@ -66,7 +66,7 @@ public class Gold {
 
 				} else {
 
-					new Plateau();
+					//new Plateau();
 					/*
 					 * Si cest au joueur 2 de jouer
 					 */

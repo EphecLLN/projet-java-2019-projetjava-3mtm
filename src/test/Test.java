@@ -5,6 +5,13 @@ import vue.Console;
 import vue.Echequier;
 
 public class Test{
+	/*
+	 * création du constructeur
+	 * =>Partie
+	 * =>Controller
+	 * =>Console
+	 * =>echiquier
+	 */
 	public Test() {
 Partie model = new Partie();
 Controller controllConsole = new Controller(model);

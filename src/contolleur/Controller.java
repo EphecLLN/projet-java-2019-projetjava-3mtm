@@ -11,25 +11,45 @@ public class Controller {
 		this.model = model;
 
 		}
-	public void fixX(int x) {
+	public boolean fixX(int x) {
 		
+		if(this.verif(x)==true) {
 		model.setX(x);
-		this.verif(x);
-		
+		return true;
+		}else {
+		return false;
+		}
 		
 		
 	}
-	public void fixX2(int x2) {
+	public boolean fixX2(int x2) {
+		if(this.verif(x2)==true) {
 		model.setX2(x2);
-		this.verif(x2);
+		return true;
+		}else {
+		return false;
+		}
 	}
-	public void fixY(int y) {
+	public boolean fixY(int y) {
+		if(this.verif(y)==true) {
 		model.setY(y);
-		this.verif(y);
+		
+		return true;
+	}else {
+	return false;
 	}
-	public void fixY2(int y2) {
+	}
+	
+	
+	
+	public boolean fixY2(int y2) {
+		if(this.verif(y2)==true) {
 		model.setY2(y2);
-		this.verif(y2);
+		return true;
+		}else {
+		return false;
+		}
+		
 	}
 	
 	

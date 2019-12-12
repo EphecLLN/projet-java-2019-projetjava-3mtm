@@ -29,27 +29,20 @@ public class Pion {
 						Partie.setMessErreur("vous avez deja une piece a cette position !");
 						--Partie.player;
 						break;
-					} else {
-						if (((y2 == y) && (x2 == x + 1)) || ((y2 == y) && (x2 == x - 1))) {
-							Partie.setMessage(" ");
-							Plateau.setTableau(x, y, x2, y2);
-						}
-						
 					}
 				} else {
 					
 					if (Plateau.tableau[x2][y2] == Plateau.piece2[i]) {
 						Partie.setMessErreur("Deplacement non autorisé !");
 						--Partie.player;
-					} else {
-						
-						if (((y2 == y) && (x2 == x + 1)) || ((y2 == y) && (x2 == x - 1))) {
-							Partie.setMessage(" ");
-							Plateau.setTableau(x, y, x2, y2);
-						}
+						break;
 					}
 				}
 
+			}
+			if (((y2 == y) && (x2 == x + 1)) || ((y2 == y) && (x2 == x - 1))) {
+				Partie.setMessage(" ");
+				Plateau.setTableau(x, y, x2, y2);
 			}
 		}
 		

@@ -28,7 +28,7 @@ public class Partie extends Observable {
 	boolean jouer ;
 	String joueur1;
 	String joueur2; 
-	public static  int player = 10;
+	public static  int player = 11;
 	static String messErreur =" ";
 	static String message = " ";
 	
@@ -76,8 +76,8 @@ public class Partie extends Observable {
 
 	public void setX(int x) {
 		this.x = x;
-		setChanged();
-		notifyObservers();
+		/*setChanged();
+		notifyObservers();*/
 	}
 
 	public void setjouer(boolean bol) {
@@ -105,8 +105,8 @@ public class Partie extends Observable {
 
 	public void setX2(int x2) {
 		this.x2 = x2;
-		setChanged();
-		notifyObservers();
+		/*setChanged();
+		notifyObservers();*/
 	}
 
 	public int getY2() {
@@ -169,6 +169,7 @@ public class Partie extends Observable {
 		
 		Tour rook = new Tour();
 		Cavalier knight = new Cavalier();
+		Dragon dragon = new Dragon();
 		
 			
 			player++;
@@ -181,7 +182,7 @@ public class Partie extends Observable {
 				case 'P':
 					pawn.pion(x, y, x2, y2);
 					
-
+					
 					break;
 				case 'R':
 					king.rois(x, y, x2, y2);
@@ -206,6 +207,9 @@ public class Partie extends Observable {
 				case 'C':
 					knight.cavalier(x, y, x2, y2);
 					break;
+				case 'D':
+					dragon.Dragon(x, y, x2, y2);
+					break;
 				case 0:
 					Partie.setMessErreur("Aucune piece n'a ete choisit !");//way of accessibf static variables
 					--player;
@@ -222,8 +226,8 @@ public class Partie extends Observable {
 							break outerloop;
 						} else if ((i == 8) && (j == 8)) {
 							x = 9;
-							Partie.setMessErreur("***Partie TerminÃ© !****");
-							Partie.setMessage("Le Joueur 2 a gagner ");
+							Partie.setMessErreur("***Partie Terminée !****");
+							Partie.setMessage("Les Noirs ont gagné ");
 							break outerloop;
 
 						}
@@ -259,11 +263,14 @@ public class Partie extends Observable {
 				case 'c':
 					knight.cavalier(x, y, x2, y2);
 					break;
+				case 'd':
+					dragon.Dragon(x, y, x2, y2);
+					break;
 				case 0:
-					Partie.setMessErreur("Aucune piece n'a ete choisit !");
+					Partie.setMessErreur("Aucune pièce n'a été choisie !");
 					break;
 				default:
-					Partie.setMessErreur("la piece choisis ne vous appartiens pas veiuller reesayer !");
+					Partie.setMessErreur("la pièce choisie ne vous appartiens pas veuiller réesayer !");
 					
 					--player;
 				}
@@ -274,8 +281,8 @@ public class Partie extends Observable {
 						} else {
 							if ((i == 8) && (j == 8)) {
 								x = 9;
-								Partie.setMessErreur("***Partie TerminÃ© !****");
-								Partie.setMessage("Le Joueur 2 a gagner ");
+								Partie.setMessErreur("***Partie Terminée !****");
+								Partie.setMessage("Les Blancs ont gagné ");
 									break outerloop;
 							}
 						}
