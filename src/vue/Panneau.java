@@ -61,6 +61,9 @@ import java.awt.event.MouseListener;
 				  case 'C' :
 						this.dessin("cavalierN.png", j+1, i+1,g);
 						break;
+				  case 'D' :
+						this.dessin("dragonN.png", j+1, i+1,g);
+						break;
 				  case 'S' :
 						this.dessin("silverN.png", j+1, i+1,g);
 						break;
@@ -102,6 +105,9 @@ import java.awt.event.MouseListener;
 						break;
 				  case 'x' :
 						this.dessin("pion.png", j+1, i+1,g);
+						break;
+				  case 'd' :
+						this.dessin("dragon.png", j+1, i+1,g);
 						break;
 				  }
 				 

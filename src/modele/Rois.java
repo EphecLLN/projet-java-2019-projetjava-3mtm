@@ -73,11 +73,11 @@ public class Rois {
 					 * Si cest au joueur 2 de jouer
 					 */
 					if (Partie.player % 2 == 0) {
-						if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
+						if (Plateau.tableau[x2][y2] == Plateau.piece2[i]) {
 							Partie.setMessErreur("vous avez deja une piece a cette position !");
 							--Partie.player;
 							break;
-						} else if (Plateau.tableau[x2][y2] ==Plateau.piece2[i]) {
+						} else if (Plateau.tableau[x2][y2] ==Plateau.piece[i]) {
 							Plateau.setTableau(x, y, x2, y2);
 							break;
 

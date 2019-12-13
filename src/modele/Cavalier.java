@@ -12,13 +12,14 @@ public class Cavalier {
 	 */
 
 	public void cavalier(int x, int y, int x2, int y2) {
+		int def= Partie.player;
 		/*
 		 * coord est un tableau qui contient tout les deplacement possible du Cavalier.
 		 */
-		int[][] coord = { { x + 2, y - 1 }, { x + 2, y + 1 } };
-		int[][] coord2 = { { x - 2, y - 1 }, { x - 2, y + 1 } };
+		int[][] coord = { { x + 2, y - 1 }, { x + 2, y + 1 },{ x + 1, y + 2 },{ x + 1, y -2 } };
+		int[][] coord2 = { { x - 2, y - 1 }, { x - 2, y + 1 },{ x - 1, y + 2 },{ x - 1, y - 2 } };
 		if (Plateau.tableau[x2][y2] == 0) {
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < coord.length; i++) {
 				/*
 				 * on parcoure le tableau des movements possible et on verifie ci les
 				 * coordonnees de destination appartiennent a ce tableau si oui on fait le
@@ -27,12 +28,12 @@ public class Cavalier {
 				if (((x2 == coord[i][0]) && (y2 == coord[i][1])) || ((x2 == coord2[i][0]) && (y2 == coord2[i][1]))) {
 					Plateau.setTableau(x, y, x2, y2);
 					break;
-				} else {
+				}/* else {
 					if (i == 1) {
 						Partie.setMessErreur("deplacement non autorisé");
 						--Partie.player;
 					}
-				}
+				}*/
 			}
 
 		} else {
@@ -72,6 +73,9 @@ public class Cavalier {
 					}
 				}
 			}
+		}
+		if(def==Partie.player&&(Plateau.tableau[x][y]=='C'||Plateau.tableau[x][y]=='c')) {
+			--Partie.player;
 		}
 		
 	}

@@ -126,8 +126,8 @@ public class Partie extends Observable {
 
 	public void setJoueur1(String joueur1) {
 		this.joueur1 = joueur1;
-		setChanged();
-		notifyObservers();
+		/*setChanged();
+		notifyObservers();*/
 	}
 
 	public String getJoueur2() {
@@ -136,8 +136,8 @@ public class Partie extends Observable {
 
 	public void setJoueur2(String joueur2) {
 		this.joueur2 = joueur2;
-		setChanged();
-		notifyObservers();
+		/*setChanged();
+		notifyObservers();*/
 	}
 
 	public static int getPlayer() {
@@ -202,14 +202,13 @@ public class Partie extends Observable {
 					bishop.fou(x, y, x2, y2);
 					break;
 				case 'T':
-					System.out.println("okok");
 					rook.tour(x, y, x2, y2);
 					break;
 				case 'C':
 					knight.cavalier(x, y, x2, y2);
 					break;
 				case 'D':
-					dragon.Dragon(x, y, x2, y2);
+					dragon.dragon(x, y, x2, y2);
 					break;
 				case 0:
 					Partie.setMessErreur("Aucune piece n'a ete choisit !");//way of accessibf static variables
@@ -217,8 +216,8 @@ public class Partie extends Observable {
 					break;
 				default:
 					Partie.setMessErreur("la piece choisis ne vous appartiens pas veiuller reesayer !");
-					
 					--player;
+					break;
 				}
 				outerloop: for (int i = 0; i < 9; i++) {
 					for (int j = 0; j < 9; j++) {
@@ -256,7 +255,6 @@ public class Partie extends Observable {
 					bishop.fou(x, y, x2, y2);
 					break;
 				case 't':
-					System.out.println("okok");
 					rook.tour(x, y, x2, y2);
 					break;
 				case 'x':
@@ -266,7 +264,7 @@ public class Partie extends Observable {
 					knight.cavalier(x, y, x2, y2);
 					break;
 				case 'd':
-					dragon.Dragon(x, y, x2, y2);
+					dragon.dragon(x, y, x2, y2);
 					break;
 				case 0:
 					Partie.setMessErreur("Aucune pièce n'a été choisie !");
@@ -275,6 +273,7 @@ public class Partie extends Observable {
 					Partie.setMessErreur("la pièce choisie ne vous appartiens pas veuiller réesayer !");
 					
 					--player;
+					break;
 				}
 				outerloop: for (int i = 0; i < 9; i++) {
 					for (int j = 0; j < 9; j++) {

@@ -75,7 +75,7 @@ public class Gold {
 						--Partie.player;
 						break;
 					} else {
-						new Plateau();
+						//new Plateau();
 						if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 							Partie.setMessage(" ");
 							Plateau.setTableau(x, y, x2, y2);

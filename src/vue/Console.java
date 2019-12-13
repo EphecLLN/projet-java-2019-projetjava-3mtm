@@ -53,8 +53,8 @@ public class Console extends Vue implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		if(model.getjouer() == true) {
-			
+		
+			if(model.getjouer()==true) {
 			model.jouer();
 			
 			this.afficher(Plateau.tableau);
@@ -62,7 +62,7 @@ public class Console extends Vue implements Observer {
 			System.out.println(Partie.getMessErreur());
 			new Thread (new ReadInput()).start();
 		
-		}
+			}
 
 	
 		
