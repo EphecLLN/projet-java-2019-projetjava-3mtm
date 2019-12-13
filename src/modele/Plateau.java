@@ -41,8 +41,8 @@ public class Plateau {
 
 	public static char[][] tableau = new char[9][9];
 	
-	public static final char[] piece = { 'L', 'C', 'S', 'G', 'R', 'F', 'T', 'P','D' };
-	 public static final char[] piece2 = { 'l', 'c', 's', 'g', 'r', 'f', 't', 'x','d' };
+	public static final char[] piece = { 'L', 'C', 'S', 'G', 'R', 'F', 'T', 'P','D','V' };
+	 public static final char[] piece2 = { 'l', 'c', 's', 'g', 'r', 'f', 't', 'x','d','v' };
 
 	/*
 	 * cette methode va disposer les pieces dans les cases met chaque element de

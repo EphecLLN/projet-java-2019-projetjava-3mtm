@@ -227,12 +227,21 @@ public class Fou {
 		System.out.println(Plateau.tableau[x][y]);
 		if(def==Partie.player&&(Plateau.tableau[x][y]=='F'||Plateau.tableau[x][y]=='f')) {
 			--Partie.player;
-			System.out.println("frgyethiej");
 		}
+		if (def % 2 == 1) {
+			if (x2 > 7) {
+				Plateau.tableau[x2][y2] = 'V';
+			}
+		} else {
+			if (x2 < 2) {
+				Plateau.tableau[x2][y2] = 'v';
+			}
+		}
+	}
 
 		
 
-	}
+	
 	public boolean testP(char c,int f,int fa,int a,int ya) {
 		boolean b = false;
 		for(int i = 0;i<Plateau.piece.length;i++) {

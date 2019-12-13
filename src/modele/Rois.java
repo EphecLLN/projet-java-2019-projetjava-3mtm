@@ -17,7 +17,7 @@ public class Rois {
   	 
 
 		Partie part = new Partie();
-  	 
+		int def = Partie.player;
 
 		/*
 		 * coord est un tableau qui contient tout les deplacement possible du roi
@@ -55,10 +55,6 @@ public class Rois {
 
 			for (int i = 0; i < 8; i++) {
 				if (Partie.player % 2 == 1) {
-					//new Plateau();
-					/*
-					 * Si cest au joueur 1 de jouer,
-					 */
 					if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 						Partie.setMessErreur("vous avez deja une piece a cette position !");
 						--Partie.player;
@@ -84,11 +80,13 @@ public class Rois {
 						}
 					}
 				}
-
+				
 			}
 		}
 		
-  	  
+		if (def == Partie.player && (Plateau.tableau[x][y] == 'R' || Plateau.tableau[x][y] == 'r')) {
+			--Partie.player;
+		}
 
 	}
 }

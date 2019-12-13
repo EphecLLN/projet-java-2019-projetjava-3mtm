@@ -37,7 +37,7 @@ public class Cavalier {
 			}
 
 		} else {
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < Plateau.piece.length; i++) {
 				/*
 				 * Si cest au joueur 1 de jouer
 				 */
@@ -76,6 +76,17 @@ public class Cavalier {
 		}
 		if(def==Partie.player&&(Plateau.tableau[x][y]=='C'||Plateau.tableau[x][y]=='c')) {
 			--Partie.player;
+		}
+		if (Partie.player == def) {
+			if (def % 2 == 1) {
+				if (x2 > 7) {
+					Plateau.tableau[x2][y2] = 'G';
+				}
+			} else {
+				if (x2 < 1) {
+					Plateau.tableau[x2][y2] = 'g';
+				}
+			}
 		}
 		
 	}

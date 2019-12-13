@@ -20,10 +20,11 @@ public class Gold {
 		/*
 		 * coord est un tableau qui contient tout les deplacement possible du Gold
 		 */
+		int def = Partie.player;
 		int[][] coord = { { x, y + 1 }, { x, y - 1 }, { x + 1, y }, { x - 1, y }, { x + 1, y + 1 }, { x + 1, y - 1 } };
 		int[][] coord2 = { { x, y + 1 }, { x - 1, y + 1 }, { x, y - 1 }, { x + 1, y }, { x - 1, y }, { x - 1, y - 1 } };
 		if (Plateau.tableau[x2][y2] == 0) {
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < 6; i++) {
 				/*
 				 * on parcoure le tableau des movements possible et on verifie ci les
 				 * coordonnees de destination appartiennent a ce tableau si oui on fait le
@@ -35,28 +36,27 @@ public class Gold {
 					Plateau.setTableau(x, y, x2, y2);
 					break;
 
-				} else {
+				}/* else {
 					if (i == 7) {
 						Partie.setMessErreur("deplacement non autorisé");
 						--Partie.player;
 					}
-				}
+				}*/
 			}
 
 		} else {
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < Plateau.piece.length; i++) {
 				/*
 				 * Si cest au joueur 1 de jouer
 				 */
 				if (Partie.player % 2 == 1) {
-
 					//new Plateau();
 					if (Plateau.tableau[x2][y2] == Plateau.piece[i]) {
 						Partie.setMessErreur("vous avez deja une piece a cette position !");
 						--Partie.player;
 						break;
 					} else {
-						new Plateau();
+						//new Plateau();
 						if (Plateau.tableau[x2][y2] == Plateau.piece2[i]) {
 							Partie.setMessage(" ");
 							Plateau.setTableau(x, y, x2, y2);
@@ -85,7 +85,9 @@ public class Gold {
 				}
 			}
 		}
-		
+		if (def == Partie.player && (Plateau.tableau[x][y] == 'G' || Plateau.tableau[x][y] == 'g')) {
+			--Partie.player;
+		}
 
 	}
 

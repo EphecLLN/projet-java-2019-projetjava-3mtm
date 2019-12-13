@@ -13,7 +13,7 @@ public class Silver {
 	public void silver(int x, int y, int x2, int y2) {
 		//Plateau tab = new Plateau();
 		Partie part = new Partie();
-		
+		int def = Partie.player;
 		/*
 		 * coord est un tableau qui contient tout les deplacement possible du silver
 		 */
@@ -32,17 +32,16 @@ public class Silver {
 					Plateau.setTableau(x, y, x2, y2);
 					break;
 
-				} else {
+				}/* else {
 					if (i == 4) {
 						Partie.setMessErreur("deplacement non autorisé");
 						--Partie.player;
-						System.out.println("wtfwtf");
 					}
-				}
+				}*/
 			}
 
 		} else {
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < Plateau.piece.length; i++) {
 				if (Partie.player % 2 == 1) {
 					//new Plateau();
 					/*
@@ -75,7 +74,20 @@ public class Silver {
 				}
 			}
 		}
-		
+		if (def == Partie.player && (Plateau.tableau[x][y] == 'S' || Plateau.tableau[x][y] == 's')) {
+			--Partie.player;
+		}
+		if (Partie.player == def) {
+			if (def % 2 == 1) {
+				if (x2 > 7) {
+					Plateau.tableau[x2][y2] = 'G';
+				}
+			} else {
+				if (x2 < 1) {
+					Plateau.tableau[x2][y2] = 'g';
+				}
+			}
+		}
 	}
 
 }

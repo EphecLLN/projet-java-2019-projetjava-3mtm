@@ -170,6 +170,7 @@ public class Partie extends Observable {
 		Tour rook = new Tour();
 		Cavalier knight = new Cavalier();
 		Dragon dragon = new Dragon();
+		Cheval cheval = new Cheval();
 		
 			
 			player++;
@@ -186,6 +187,9 @@ public class Partie extends Observable {
 					break;
 				case 'R':
 					king.rois(x, y, x2, y2);
+					break;
+				case 'V':
+					cheval.cheval(x, y, x2, y2);
 					break;
 				case 'S':
 					argent.silver(x, y, x2, y2);
@@ -265,6 +269,9 @@ public class Partie extends Observable {
 					break;
 				case 'd':
 					dragon.dragon(x, y, x2, y2);
+					break;
+				case 'v':
+					cheval.cheval(x, y, x2, y2);
 					break;
 				case 0:
 					Partie.setMessErreur("Aucune pièce n'a été choisie !");
