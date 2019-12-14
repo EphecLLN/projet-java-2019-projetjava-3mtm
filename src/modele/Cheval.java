@@ -56,13 +56,8 @@ public class Cheval {
 
 		if (Plateau.tableau[x2][y2] == 0) {
 
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < 4; i++) {
 				if ((x2 == coord[i][0]) && (y2 == coord[i][1])) {
-					/*
-					 * on parcoure le tableau des movement possible et on verifie ci les coordonne
-					 * de destination appartiennent a ce tableau si oui on fait le deplacement si
-					 * non un message d'erreur est renvoyé
-					 */
 					Plateau.setTableau(x, y, x2, y2);
 					break;
 
@@ -89,9 +84,6 @@ public class Cheval {
 					}
 
 				} else {
-					/*
-					 * Si cest au joueur 2 de jouer
-					 */
 					if (Partie.player % 2 == 0) {
 						if (Plateau.tableau[x2][y2] == Plateau.piece2[i]) {
 							Partie.setMessErreur("vous avez deja une piece a cette position !");
@@ -108,7 +100,7 @@ public class Cheval {
 			}
 		}
 
-		if (def == Partie.player && (Plateau.tableau[x][y] == 'F' || Plateau.tableau[x][y] == 'f')) {
+		if (def == Partie.player && (Plateau.tableau[x][y] == 'V' || Plateau.tableau[x][y] == 'v')) {
 			if ((x2 > x) && (y2 > y)) {
 				outerloop: for (int i = x + 1, j = y + 1; i <= x2 && j <= y2; i++, j++) {
 					System.out.println("test," + Plateau.tableau[i][j] + "fin");
@@ -167,12 +159,12 @@ public class Cheval {
 				}
 			} else {
 
-				Partie.setMessErreur("deplacement non autorisé");
+				Partie.setMessErreur("deplacement non autoris�");
 				--Partie.player;
 
 			}
 		}
-		if (def == Partie.player && (Plateau.tableau[x][y] == 'F' || Plateau.tableau[x][y] == 'f')) {
+		if (def == Partie.player && (Plateau.tableau[x][y] == 'V' || Plateau.tableau[x][y] == 'v')) {
 			--Partie.player;
 		}
 

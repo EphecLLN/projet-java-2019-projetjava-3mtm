@@ -56,7 +56,7 @@ public class Controller {
 	public boolean verif(int x) {
 		if((x > 8) || (x <0)) {
 		System.out.println("Le nombre entré doit etre entre 0 et 8 inclus !");
-		model.setPlayer(-1);
+		//model.setPlayer(-1);
 		return false;
 		}
 		return true;

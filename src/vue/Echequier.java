@@ -10,8 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import modele.Partie;
-
 import modele.*;
 import contolleur.Controller;
 import java.awt.event.MouseAdapter;
@@ -57,6 +55,7 @@ public class Echequier extends Vue implements Observer, MouseListener {
 	// private class ReadInput implements Runnable {
 
 	int click;
+	int checkMode = 0;
 
 	// @Override
 	public void change() {
@@ -67,74 +66,103 @@ public class Echequier extends Vue implements Observer, MouseListener {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if (modele.Partie.getPlayer() % 2 == 1) {// si le player est impaire ==>
+				super.mouseClicked(e);
+				int x = e.getX();
+				int y = e.getY();
+				if (y < 500 && y > 400 && x > 600 && x < 710) {
+					System.out.println("bas");
+					Plateau.tableau = new char[9][9];
+					new Plateau();
+					Partie.player = 11;
+					checkMode = 1;
+					model.setjouer(false);
+				} else if (y < 400 && y > 300 && x > 600 && x < 710) {
+					System.out.println("haut");
+					Plateau.tableau = new char[9][9];
+					new Plateau();
+					Partie.player = 11;
+					checkMode = 0;
+					model.setjouer(true);
 
-					super.mouseClicked(e);
-					int x = e.getX();
-					int y = e.getY();
-					int a = ((x - 59) / 50);// colonne
-					int b = ((y - 81) / 50);// ligne
-					Graphics gr = f.getGraphics();
-					if (compteurClick % 2 == 1) {// si compteurClick est impaire
-						model.setjouer(false);// jouer mis a false
-						if (control.fixX(b) == true && control.fixY(a) == true) {// X mis a b si b est ds le cadre
-							// Y mis a a si a est ds le cadre//ne le fait pas si pas ds le cadre
-							Color mycolor = new Color(0, 255, 0, 127);
-							gr.setColor(mycolor);
-							gr.fill3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);// carré vert
-							++compteurClick;// compteurClick mis a paire
-						}
-					} else {// si compteurclick est paire==> deuxieme click pour deplacement
-						if (control.fixX2(b) == true && control.fixY2(a) == true) {
-
-							System.out.println("   ***" + Partie.getMessage());
-
-							if (modele.Partie.getMessErreur().equals(" ") == false) {
-								gr.setColor(Color.red);
-								gr.draw3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);
-
-							}
-
-							--compteurClick;
-							model.setjouer(true);
-
-						}
-					}
 				} else {
-					super.mouseClicked(e);
-					int x = e.getX();
-					int y = e.getY();
-					int a = ((x - 59) / 50);// colonne
-					int b = ((y - 81) / 50);// ligne
-					Graphics gr = f.getGraphics();
-					if (compteurClick % 2 == 1) {// si compteurClick est impaire
-						model.setjouer(false);// jouer mis a false
-						if (control.fixX(b) == true && control.fixY(a) == true) {// X mis a b si b est ds le cadre
-							// Y mis a a si a est ds le cadre//ne le fait pas si pas ds le cadre
-							Color mycolor = new Color(0, 255, 0, 127);
-							gr.setColor(mycolor);
-							gr.fill3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);// carré vert
-							++compteurClick;// compteurClick mis a paire
-						}
-					} else {// si compteurclick est paire==> deuxieme click pour deplacement
-						if (control.fixX2(b) == true && control.fixY2(a) == true) {
+					if (checkMode == 0) {
 
-							System.out.println("   ***" + Partie.getMessage());
+						if (modele.Partie.getPlayer() % 2 == 1) {// si le player est impaire ==>
 
-							if (modele.Partie.getMessErreur().equals(" ") == false) {
-								gr.setColor(Color.red);
-								gr.draw3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);
+							// super.mouseClicked(e);
 
+							int a = ((x - 59) / 50);// colonne
+							int b = ((y - 81) / 50);// ligne
+							Graphics gr = f.getGraphics();
+							if (compteurClick % 2 == 1) {// si compteurClick est impaire
+								//model.setjouer(false);// jouer mis a false
+								model.setMessErreur("");
+								if (control.fixX(b) == true && control.fixY(a) == true) {// X mis a b si b est ds le
+																							// cadre
+									// Y mis a a si a est ds le cadre//ne le fait pas si pas ds le cadre
+
+									Color mycolor = new Color(0, 255, 0, 127);
+									gr.setColor(mycolor);
+									gr.fill3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);// carré vert
+									++compteurClick;// compteurClick mis a paire
+								}
+							} else {// si compteurclick est paire==> deuxieme click pour deplacement
+								if (control.fixX2(b) == true && control.fixY2(a) == true) {
+
+									System.out.println("   ***" + Partie.getMessage());
+
+									if (modele.Partie.getMessErreur().equals(" ") == false) {
+										gr.setColor(Color.red);
+										gr.draw3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);
+
+									}
+
+									--compteurClick;
+									model.setjouer(true);
+
+								}
 							}
 
-							--compteurClick;
-							model.setjouer(true);
+						} else {
+							model.setMessErreur("");
+							// super.mouseClicked(e);
+							int a = ((x - 59) / 50);// colonne
+							int b = ((y - 81) / 50);// ligne
+							Graphics gr = f.getGraphics();
+							if (compteurClick % 2 == 1) {// si compteurClick est impaire
+								//model.setjouer(false);// jouer mis a false
+								if (control.fixX(b) == true && control.fixY(a) == true) {// X mis a b si b est ds le
+																							// cadre
+									// Y mis a a si a est ds le cadre//ne le fait pas si pas ds le cadre
+									Color mycolor = new Color(0, 255, 0, 127);
+									gr.setColor(mycolor);
+									gr.fill3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);// carré vert
+									++compteurClick;// compteurClick mis a paire
+								}
+							} else {// si compteurclick est paire==> deuxieme click pour deplacement
+								if (control.fixX2(b) == true && control.fixY2(a) == true) {
+
+									System.out.println("   ***" + Partie.getMessage());
+
+									if (modele.Partie.getMessErreur().equals(" ") == false) {
+										gr.setColor(Color.red);
+										gr.draw3DRect(57 + (a * 50), 80 + (b * 50), 50, 50, true);
+
+									}
+
+									--compteurClick;
+									model.setjouer(true);
+
+								}
+							}
 
 						}
-					}
+					} else {
 
+					}
 				}
 			}
+
 		});
 
 	}

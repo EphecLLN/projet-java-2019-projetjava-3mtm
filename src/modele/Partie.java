@@ -146,8 +146,8 @@ public class Partie extends Observable {
 
 	public  void setPlayer(int a) {
 		Partie.player = player -a;
-		setChanged();
-		notifyObservers();
+		/*setChanged();
+		notifyObservers();*/
 	}
 
 
@@ -175,7 +175,7 @@ public class Partie extends Observable {
 			
 			player++;
 			
-			if (player % 2 == 1) {
+			if (player % 2 == 1 ) {
 				
 
 				switch (Plateau.tableau[x][y]) {

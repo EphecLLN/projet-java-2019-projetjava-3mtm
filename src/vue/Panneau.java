@@ -33,12 +33,19 @@ import java.awt.event.MouseListener;
 		  g.setColor(Color.gray);
 		
 		  g.fill3DRect(47, 47, 456, 456,true);
+		  g.setColor(Color.LIGHT_GRAY);
+		  g.fill3DRect(600, 400, 100, 50,true);
+		  g.fill3DRect(600, 300, 100, 50,true);
+		  g.setColor(Color.black);
+		  g.drawString("multi(local)", 620, 330);
+		  g.drawString("multi(socket)", 620, 430);
 		  if(modele.Partie.getMessErreur()=="***Partie Terminée !****") {
 				g.setColor(Color.white);
-				g.fillRect(50, 50, 500, 500);
+				g.fillRect(47, 47, 500, 500);
 				g.setColor(Color.black);
 				g.drawString("FIN DE PARTIE", 300, 300);
 				g.drawString(modele.Partie.getMessage(), 200, 200);
+				Partie.setMessErreur(" ");
 			}else {
 		  int compteur =0;
 		 for(int i = 0; i<9 ; i++) {

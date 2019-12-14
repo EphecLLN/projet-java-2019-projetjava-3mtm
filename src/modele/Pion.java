@@ -13,7 +13,7 @@ public class Pion {
 	public void pion(int x, int y, int x2, int y2) {
 		int def = Partie.player;
 		if (Plateau.tableau[x2][y2] == 0) {
-			if (((y2 == y) && (x2 == x + 1)) || ((y2 == y) && (x2 == x - 1))) {
+			if (((y2 == y) && (x2 == x + 1))&& (Partie.player%2==1) || ((y2 == y) && (x2 == x - 1))&& (Partie.player%2==0)) {
 				Partie.setMessage(" ");
 				Plateau.setTableau(x, y, x2, y2);
 			} else {
@@ -40,7 +40,7 @@ public class Pion {
 				}
 
 			}
-			if (((y2 == y) && (x2 == x + 1)) || ((y2 == y) && (x2 == x - 1))) {
+			if (((y2 == y) && (x2 == x + 1))&& (Partie.player%2==1) || ((y2 == y) && (x2 == x - 1))&& (Partie.player%2==0)) {
 				Partie.setMessage(" ");
 				Plateau.setTableau(x, y, x2, y2);
 			}
