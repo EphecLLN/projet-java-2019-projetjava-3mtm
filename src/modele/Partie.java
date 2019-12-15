@@ -5,6 +5,9 @@ package modele;
 
 import java.util.Observable;
 
+
+import socket.Server;
+
 /**
  * @author Tekadam Tresor
  * @author Joachim Sanglier
@@ -24,64 +27,49 @@ public class Partie extends Observable {
 	 *
 	 */
 
-	 int x , y, x2, y2;
-	boolean jouer ;
+	int x, y, x2, y2;
+	boolean jouer;
 	String joueur1;
-	String joueur2; 
-	public static  int player = 11;
-	static String messErreur =" ";
+	String joueur2;
+	public static int player = 11;
+	static String messErreur = " ";
 	static String message = " ";
-	
-
-
 
 	public static String getMessage() {
 		return message;
 	}
 
-
-
 	public static void setMessage(String message) {
 		Partie.message = message;
 	}
-
-
 
 	public static String getMessErreur() {
 		return messErreur;
 	}
 
-
-
 	public static void setMessErreur(String messErreur) {
 		Partie.messErreur = messErreur;
 	}
-
-
 
 	/**
 	 * player est un int qui peut etre soit paire ou impaire permet de passer le
 	 * tour d'un joueur a lautre en fonction de ci elle est paire ou impaire
 	 *
 	 */
-	
-	
 
-	
 	public int getX() {
 		return x;
 	}
-	
-	
 
 	public void setX(int x) {
 		this.x = x;
-		/*setChanged();
-		notifyObservers();*/
+		/*
+		 * setChanged(); notifyObservers();
+		 */
 	}
 
 	public void setjouer(boolean bol) {
-		this.jouer = bol ;
+		this.jouer = bol;
 		setChanged();
 		notifyObservers();
 	}
@@ -89,6 +77,7 @@ public class Partie extends Observable {
 	public int getY() {
 		return y;
 	}
+
 	public boolean getjouer() {
 		return jouer;
 	}
@@ -105,8 +94,9 @@ public class Partie extends Observable {
 
 	public void setX2(int x2) {
 		this.x2 = x2;
-		/*setChanged();
-		notifyObservers();*/
+		/*
+		 * setChanged(); notifyObservers();
+		 */
 	}
 
 	public int getY2() {
@@ -121,13 +111,14 @@ public class Partie extends Observable {
 
 	public String getJoueur1() {
 		return joueur1;
-		
+
 	}
 
 	public void setJoueur1(String joueur1) {
 		this.joueur1 = joueur1;
-		/*setChanged();
-		notifyObservers();*/
+		/*
+		 * setChanged(); notifyObservers();
+		 */
 	}
 
 	public String getJoueur2() {
@@ -136,170 +127,164 @@ public class Partie extends Observable {
 
 	public void setJoueur2(String joueur2) {
 		this.joueur2 = joueur2;
-		/*setChanged();
-		notifyObservers();*/
+		/*
+		 * setChanged(); notifyObservers();
+		 */
 	}
 
 	public static int getPlayer() {
 		return player;
 	}
 
-	public  void setPlayer(int a) {
-		Partie.player = player -a;
-		/*setChanged();
-		notifyObservers();*/
+	public void setPlayer(int a) {
+		Partie.player = player - a;
+		/*
+		 * setChanged(); notifyObservers();
+		 */
 	}
 
+	public void jouer() {
 
-
-
-
-
-		
-      public void jouer() {
-
-
-		
 		Rois king = new Rois();
 		Pion pawn = new Pion();
 		Silver argent = new Silver();
 		Gold or = new Gold();
 		Lance spear = new Lance();
 		Fou bishop = new Fou();
-		
+
 		Tour rook = new Tour();
 		Cavalier knight = new Cavalier();
 		Dragon dragon = new Dragon();
 		Cheval cheval = new Cheval();
-		
-			
-			player++;
-			
-			if (player % 2 == 1 ) {
-				
+		int def = Partie.player;
 
-				switch (Plateau.tableau[x][y]) {
-				
-				case 'P':
-					pawn.pion(x, y, x2, y2);
-					
-					
-					break;
-				case 'R':
-					king.rois(x, y, x2, y2);
-					break;
-				case 'V':
-					cheval.cheval(x, y, x2, y2);
-					break;
-				case 'S':
-					argent.silver(x, y, x2, y2);
-					break;
-				case 'G':
-					or.gold(x, y, x2, y2);
-					break;
+		player++;
 
-				case 'L':
-					
-					spear.lance(x, y, x2, y2);
-					break;
-				case 'F':
-					bishop.fou(x, y, x2, y2);
-					break;
-				case 'T':
-					rook.tour(x, y, x2, y2);
-					break;
-				case 'C':
-					knight.cavalier(x, y, x2, y2);
-					break;
-				case 'D':
-					dragon.dragon(x, y, x2, y2);
-					break;
-				case 0:
-					Partie.setMessErreur("Aucune piece n'a ete choisit !");//way of accessibf static variables
-					--player;
-					break;
-				default:
-					Partie.setMessErreur("la piece choisis ne vous appartiens pas veiuller reesayer !");
-					--player;
-					break;
-				}
-				outerloop: for (int i = 0; i < 9; i++) {
-					for (int j = 0; j < 9; j++) {
+		if (player % 2 == 1) {
 
-						if (Plateau.tableau[i][j] == 'r') {
-							break outerloop;
-						} else if ((i == 8) && (j == 8)) {
-							x = 9;
-							Partie.setMessErreur("***Partie Terminée !****");
-							Partie.setMessage("Les Noirs ont gagné ");
-							break outerloop;
+			switch (Plateau.tableau[x][y]) {
 
-						}
+			case 'P':
+				pawn.pion(x, y, x2, y2);
+
+				break;
+			case 'R':
+				king.rois(x, y, x2, y2);
+				break;
+			case 'V':
+				cheval.cheval(x, y, x2, y2);
+				break;
+			case 'S':
+				argent.silver(x, y, x2, y2);
+				break;
+			case 'G':
+				or.gold(x, y, x2, y2);
+				break;
+
+			case 'L':
+
+				spear.lance(x, y, x2, y2);
+				break;
+			case 'F':
+				bishop.fou(x, y, x2, y2);
+				break;
+			case 'T':
+				rook.tour(x, y, x2, y2);
+				break;
+			case 'C':
+				knight.cavalier(x, y, x2, y2);
+				break;
+			case 'D':
+				dragon.dragon(x, y, x2, y2);
+				break;
+			case 0:
+				Partie.setMessErreur("Aucune piece n'a ete choisit !");// way of accessibf static variables
+				--player;
+				break;
+			default:
+				Partie.setMessErreur("la piece choisis ne vous appartiens pas veiuller reesayer !");
+				--player;
+				break;
+			}
+			outerloop: for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+
+					if (Plateau.tableau[i][j] == 'r') {
+						break outerloop;
+					} else if ((i == 8) && (j == 8)) {
+						x = 9;
+						Partie.setMessErreur("***Partie Terminée !****");
+						Partie.setMessage("Les Noirs ont gagné ");
+						break outerloop;
+
 					}
 				}
+			}
+			if (def != Partie.player && Server.t.getState()!=null) {
+				Server.t.notify();
+			}
 
-			} else {
-				
-				
+		} else {
 
-				switch (Plateau.tableau[x][y]) {
-				case 'r':
-					king.rois(x, y, x2, y2);
-					break;
-				case 'g':
-					or.gold(x, y, x2, y2);
-					break;
-				case 's':
-					argent.silver(x, y, x2, y2);
-					break;
-				case 'l':
-					spear.lance(x, y, x2, y2);
-					break;
-				case 'f':
-					bishop.fou(x, y, x2, y2);
-					break;
-				case 't':
-					rook.tour(x, y, x2, y2);
-					break;
-				case 'x':
-					pawn.pion(x, y, x2, y2);
-					break;
-				case 'c':
-					knight.cavalier(x, y, x2, y2);
-					break;
-				case 'd':
-					dragon.dragon(x, y, x2, y2);
-					break;
-				case 'v':
-					cheval.cheval(x, y, x2, y2);
-					break;
-				case 0:
-					Partie.setMessErreur("Aucune pièce n'a été choisie !");
-					break;
-				default:
-					Partie.setMessErreur("la pièce choisie ne vous appartiens pas veuiller réesayer !");
-					
-					--player;
-					break;
-				}
-				outerloop: for (int i = 0; i < 9; i++) {
-					for (int j = 0; j < 9; j++) {
-						if (Plateau.tableau[i][j] == 'R') {
+			switch (Plateau.tableau[x][y]) {
+			case 'r':
+				king.rois(x, y, x2, y2);
+				break;
+			case 'g':
+				or.gold(x, y, x2, y2);
+				break;
+			case 's':
+				argent.silver(x, y, x2, y2);
+				break;
+			case 'l':
+				spear.lance(x, y, x2, y2);
+				break;
+			case 'f':
+				bishop.fou(x, y, x2, y2);
+				break;
+			case 't':
+				rook.tour(x, y, x2, y2);
+				break;
+			case 'x':
+				pawn.pion(x, y, x2, y2);
+				break;
+			case 'c':
+				knight.cavalier(x, y, x2, y2);
+				break;
+			case 'd':
+				dragon.dragon(x, y, x2, y2);
+				break;
+			case 'v':
+				cheval.cheval(x, y, x2, y2);
+				break;
+			case 0:
+				Partie.setMessErreur("Aucune pièce n'a été choisie !");
+				break;
+			default:
+				Partie.setMessErreur("la pièce choisie ne vous appartiens pas veuiller réesayer !");
+
+				--player;
+				break;
+			}
+			outerloop: for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					if (Plateau.tableau[i][j] == 'R') {
+						break outerloop;
+					} else {
+						if ((i == 8) && (j == 8)) {
+							x = 9;
+							Partie.setMessErreur("***Partie Terminée !****");
+							Partie.setMessage("Les Blancs ont gagné ");
 							break outerloop;
-						} else {
-							if ((i == 8) && (j == 8)) {
-								x = 9;
-								Partie.setMessErreur("***Partie Terminée !****");
-								Partie.setMessage("Les Blancs ont gagné ");
-									break outerloop;
-							}
 						}
 					}
 				}
 			}
-		
+			if (def != Partie.player && Server.t.getState()!=null) {
+				Server.t.notify();
+			}
+		}
+
 	}
 
-
 }
-

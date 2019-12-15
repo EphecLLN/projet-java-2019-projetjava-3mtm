@@ -11,10 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import modele.*;
+import socket.Server;
 import contolleur.Controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 import modele.*;
 import contolleur.*;
@@ -75,7 +77,20 @@ public class Echequier extends Vue implements Observer, MouseListener {
 					new Plateau();
 					Partie.player = 11;
 					checkMode = 1;
-					model.setjouer(false);
+					try {
+						Server s = new Server() ;
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						System.out.println("erreur bouton");
+					}
+					System.out.println("pass");
+					/*try {
+						Server.t.wait();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}*/
+					model.setjouer(true);
 				} else if (y < 400 && y > 300 && x > 600 && x < 710) {
 					System.out.println("haut");
 					Plateau.tableau = new char[9][9];
