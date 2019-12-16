@@ -57,8 +57,7 @@ public class Echequier extends Vue implements Observer, MouseListener {
 	// private class ReadInput implements Runnable {
 
 	int click;
-	int checkMode = 0;
-
+	
 	// @Override
 	public void change() {
 		// TODO Auto-generated method stub
@@ -71,36 +70,8 @@ public class Echequier extends Vue implements Observer, MouseListener {
 				super.mouseClicked(e);
 				int x = e.getX();
 				int y = e.getY();
-				if (y < 500 && y > 400 && x > 600 && x < 710) {
-					System.out.println("bas");
-					Plateau.tableau = new char[9][9];
-					new Plateau();
-					Partie.player = 11;
-					checkMode = 1;
-					try {
-						Server s = new Server() ;
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						System.out.println("erreur bouton");
-					}
-					System.out.println("pass");
-					/*try {
-						Server.t.wait();
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}*/
-					model.setjouer(true);
-				} else if (y < 400 && y > 300 && x > 600 && x < 710) {
-					System.out.println("haut");
-					Plateau.tableau = new char[9][9];
-					new Plateau();
-					Partie.player = 11;
-					checkMode = 0;
-					model.setjouer(true);
-
-				} else {
-					if (checkMode == 0) {
+				
+					
 
 						if (modele.Partie.getPlayer() % 2 == 1) {// si le player est impaire ==>
 
@@ -172,10 +143,8 @@ public class Echequier extends Vue implements Observer, MouseListener {
 							}
 
 						}
-					} else {
-
-					}
-				}
+					
+				
 			}
 
 		});

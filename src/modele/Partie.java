@@ -220,9 +220,7 @@ public class Partie extends Observable {
 					}
 				}
 			}
-			if (def != Partie.player && Server.t.getState()!=null) {
-				Server.t.notify();
-			}
+			
 
 		} else {
 
@@ -259,6 +257,7 @@ public class Partie extends Observable {
 				break;
 			case 0:
 				Partie.setMessErreur("Aucune pièce n'a été choisie !");
+				--player;
 				break;
 			default:
 				Partie.setMessErreur("la pièce choisie ne vous appartiens pas veuiller réesayer !");
@@ -280,9 +279,7 @@ public class Partie extends Observable {
 					}
 				}
 			}
-			if (def != Partie.player && Server.t.getState()!=null) {
-				Server.t.notify();
-			}
+			
 		}
 
 	}
